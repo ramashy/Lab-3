@@ -1,0 +1,54 @@
+//Discription - This program calculate car finance payment calculate
+//Programmer - Ramachandra Shyanaka
+
+#include<iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    double car_price,tax,after_tax, down_payment, balance,apr = 0.0,year_tax,total,payment;
+    int credit,months,years;
+    
+    cout << "Enter the price of your car :" << endl;
+    cin >> car_price;
+    cout <<"Enter the Sales tax percentage :"<<endl;
+    cin>>tax;
+    after_tax = ((car_price * tax)/100)+car_price;
+    cout << "Your price after tax : "<<after_tax<<endl;
+    cout <<"Down payment :"<<endl;
+    cin >> down_payment;
+    balance = after_tax - down_payment;
+    cout <<"The remaining blance is : "<<balance<<endl;
+    cout<<"Please enter your current credit score : "<<endl;
+    cin >> credit;
+    if(credit>=800)
+    {
+        cout<<"Your APR is 1%"<<endl;
+
+        apr = 1;
+    }
+    if (credit<800||credit>=700)
+    {
+        cout<<"Your APR is 3%"<<endl;
+
+        apr=3.5;
+    }
+    if (credit<700||credit>=450)
+    {
+        cout<<"Your APR is 7%"<<endl;
+        apr=7;
+    }
+    else
+        cout<<"Sorry!!You dont have enough credit"<<endl;
+    year_tax=(balance* apr)/100;
+    
+    cout << "How many months your financing :"<<endl;
+    cin>>months;
+    years = months/12;
+    
+    total = (year_tax*years) + balance;
+    payment = total / months;
+    cout << "your monthly payment is : " << setprecision(3)<< payment<<endl;
+    return 0;
+}
